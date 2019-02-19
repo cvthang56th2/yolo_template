@@ -1,0 +1,45 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node --inspect server.js eslint"
+  },
+  "author": "",
+  "license": "ISC",
+  "_moduleAliases": {
+    "@root": ".",
+    "@global": "src/global",
+    "@utils": "src/utils",
+    "@modules": "src/modules"
+  },
+  "dependencies": {
+    "boom": "^7.3.0",
+    "config": "^3.0.1",
+    "crumb": "^7.2.3",
+    "glob": "^7.1.3",
+    "hapi": "^18.1.0",
+    "hapi-swagger": "^9.3.1",
+    "inert": "^5.1.2",
+    "joi": "^14.3.1",
+    "lodash": "^4.17.11",
+    "module-alias": "^2.2.0",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.13",
+    "mongoose-plugin-autoinc": "^1.1.9",
+    "path": "^0.12.7",
+    "vision": "^5.4.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.14.1",
+    "nodemon": "^1.18.10"
+  }
+}

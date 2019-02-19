@@ -1,0 +1,12 @@
+app/config/development.js
+app/config/production.js
+app/config/staging.js
+
+node_modules
+public/assets/dist
+var
+var/*.log
+*.log
+.vscode
+.idea
+package-lock.json
