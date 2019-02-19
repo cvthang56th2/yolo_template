@@ -1,0 +1,41 @@
+#Ignore Mac files in web
+/web/.DS_Store
+/web/node_modules/
+/web/npm-debug.log*
+/web/yarn-debug.log*
+/web/yarn-error.log*
+/web/test/unit/coverage/
+/web/test/e2e/reports/
+/web/selenium-debug.log
+
+# Editor directories and files
+web/.idea
+web/.vscode
+web/package-lock.json
+web/*.suo
+web/*.ntvs*
+web/*.njsproj
+web/*.sln
+
+
+#Ignore Mac files in api
+# api/src/config/development.conf.js
+# api/src/config/production.conf.js
+# api/src/config/staging.conf.js
+
+api/node_modules
+api/public/files/*
+
+#Ignore Mac DS_Store files
+.DS_Store
+**/.DS_Store
+
+#Ignore Mac log files
+*.bk
+*.log
+.vscode
+.idea
+
+mazi-src.zip
+dump.rdb
+.jshintrc
