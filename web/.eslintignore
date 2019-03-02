@@ -1,7 +1,0 @@
-/build/
-/config/
-/dist/
-/*.js
-/test/unit/coverage/
-/src/utils/vis/
-/src/utils/vue-ctk-date-time-picker/
