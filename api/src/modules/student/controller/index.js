@@ -11,14 +11,14 @@ const getItem = async (request, h) => {
 }
 const save = async (request, h) => {
   try {
-    let {payload} = request
+    let {query} = request
     let student
-    if (payload._id && mongoose.Types.ObjectId(payload._id)) {
-      student = await Student.findById(payload._id)
-      student.name = payload.name
+    if (query._id && mongoose.Types.ObjectId(query._id)) {
+      student = await Student.findById(query._id)
+      student.name = query.name
       await student.save()
     } else {
-      student = await Student.create(payload)
+      student = await Student.create(query)
     }
     return student
   } catch (error) {
