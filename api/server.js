@@ -1,6 +1,7 @@
 'use strict'
 var bableOptions = {}
 require('babel-core').transform('code', bableOptions);
+require('module-alias/register')
 
 const Path = require('path')
 const Hapi = require('hapi')
@@ -19,15 +20,15 @@ var options = _.cloneDeep(global.CONFIG.get('web.connection'))
 
 const server = Hapi.server(options)
 
-const init = async () => {
-  await require('./src/bootstrap/bootstrap.js')(server)
-  await server.start()
-  console.log(`Server running at: ${server.info.uri}`)
+const init = async() => {
+    await require('./src/bootstrap/bootstrap.js')(server)
+    await server.start()
+    console.log(`Server running at: ${server.info.uri}`)
 }
 
 process.on('unhandledRejection', (err) => {
-  console.log(err)
-  process.exit(1)
+    console.log(err)
+    process.exit(1)
 })
 
 init()

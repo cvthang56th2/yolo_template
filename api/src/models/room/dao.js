@@ -13,7 +13,7 @@ module.exports = function(schema, options) {
             let re = new RegExp(query.keyword, 'i')
             queryArr.push({
                 $or: [
-                    { jobName: re }
+                    { name: re }
                 ]
             })
         }
@@ -24,28 +24,28 @@ module.exports = function(schema, options) {
             sort: { createdAt: -1 },
             // lean: true,
             page: dataInit.page || 1,
-            limit: dataInit.itemsPerPage || 20,
+            limit: dataInit.perPage || 20,
             populate: query.populate || []
         }
+        console.log(queryArr)
 
         let pagination = await Model.paginate({ $and: queryArr }, options)
         if (pagination) {
             return {
                 total: pagination.total,
-                current_page: pagination.page,
-                per_page: dataInit.itemsPerPage,
-                last_page: pagination.pages,
+                currentPage: pagination.page,
+                perPage: dataInit.limit,
+                lastPage: pagination.pages,
                 data: pagination.docs
             }
         }
     }
     schema.statics.getCountByStatus = async function(query = {}) {
         const Model = this
-        let $and = []
 
         return {
-            countAll: await Model.find({ status: { $ne: 'archive' }, $and }).countDocuments(),
-            countArchive: await Model.find({ status: 'archive', $and }).countDocuments()
+            countAll: await Model.find({ status: { $ne: 'archive' } }).countDocuments(),
+            countArchive: await Model.find({ status: 'archive' }).countDocuments()
         }
     }
 }

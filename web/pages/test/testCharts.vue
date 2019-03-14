@@ -3,54 +3,57 @@
     <h1>
       test charts
     </h1>
-    <div id="chartdiv" style="width: 900px; height 800px;" />
+    <div ref="chartdiv" style="width: 900px; height 800px;" />
   </div>
 </template>
 
 <script>
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
+import am4themesAnimated from '@amcharts/amcharts4/themes/animated'
 
+am4core.useTheme(am4themesAnimated)
 export default {
   mounted () {
-    const chart = am4core.create('chartdiv', am4charts.PieChart)
-    // Create pie series
-    const series = chart.series.push(new am4charts.PieSeries())
-    series.dataFields.value = 'litres'
-    series.dataFields.category = 'country'
+    const chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart)
 
-    // Add data
-    chart.data = [{
-      'country': 'Lithuania',
-      'litres': 501.9
-    }, {
-      'country': 'Czech Republic',
-      'litres': 301.9
-    }, {
-      'country': 'Ireland',
-      'litres': 201.1
-    }, {
-      'country': 'Germany',
-      'litres': 165.8
-    }, {
-      'country': 'Australia',
-      'litres': 139.9
-    }, {
-      'country': 'Austria',
-      'litres': 128.3
-    }, {
-      'country': 'UK',
-      'litres': 99
-    }, {
-      'country': 'Belgium',
-      'litres': 60
-    }, {
-      'country': 'The Netherlands',
-      'litres': 50
-    }]
+    chart.paddingRight = 20
 
-    // And, for a good measure, let's add a legend
-    chart.legend = new am4charts.Legend()
+    const data = []
+    let visits = 10
+    for (let i = 1; i < 366; i++) {
+      visits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10)
+      data.push({ date: new Date(2018, 0, i), name: 'name' + i, value: visits })
+    }
+
+    chart.data = data
+
+    const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
+    dateAxis.renderer.grid.template.location = 0
+
+    const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
+    valueAxis.tooltip.disabled = true
+    valueAxis.renderer.minWidth = 35
+
+    const series = chart.series.push(new am4charts.LineSeries())
+    series.dataFields.dateX = 'date'
+    series.dataFields.valueY = 'value'
+
+    series.tooltipText = '{valueY.value}'
+    chart.cursor = new am4charts.XYCursor()
+
+    const scrollbarX = new am4charts.XYChartScrollbar()
+    scrollbarX.series.push(series)
+    chart.scrollbarX = scrollbarX
+
+    this.chart = chart
+    console.log(process.env.apiUrl)
+  },
+
+  beforeDestroy() {
+    if (this.chart) {
+      this.chart.dispose()
+    }
   }
 }
 </script>
