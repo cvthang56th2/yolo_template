@@ -24,8 +24,19 @@ export default [{
       validate: Validate.getItem
     })
   }, {
-    method: 'GET',
+    method: 'POST',
     path: '/save-student',
-    handler: Controller.save
+    options: {
+      handler: Controller.save,
+      validate: Validate.save,
+      description: 'Save student',
+      tags: ['api', 'student'],
+      plugins: {
+        'hapi-swagger': {
+          responses: { '400': { 'description': 'Bad Request' } },
+          payloadType: 'form'
+        }
+      }
+    }
   }
 ]
