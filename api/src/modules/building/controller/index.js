@@ -1,7 +1,7 @@
 import Boom from 'boom'
 import mongoose from 'mongoose'
 
-const Room = mongoose.model('Room')
+const Building = mongoose.model('Building')
 
 const getItems = async (request, h) => {
   try {
@@ -11,7 +11,7 @@ const getItems = async (request, h) => {
       perPage: parseInt(query.perPage)
     }
 
-    return Object.assign(await Room.getPaginate(query, dataInit), await Room.getCountByStatus(query))
+    return Object.assign(await Building.getPaginate(query, dataInit), await Building.getCountByStatus(query))
   } catch (error) {
     return Boom.badRequest(error)
   }
@@ -21,11 +21,11 @@ const getItem = async (request, h) => {
   try {
     let { params } = request
     if (!(params._id && mongoose.Types.ObjectId.isValid(params._id))) {
-      return Boom.badRequest('Room Id not valid.')
+      return Boom.badRequest('Building Id not valid.')
     }
-    let item = await Room.findById(params._id)
+    let item = await Building.findById(params._id)
     if (!item) {
-      return Boom.notFound('Room not found.')
+      return Boom.notFound('Building not found.')
     }
     return item
   } catch (error) {
@@ -39,16 +39,16 @@ const save = async (request, h) => {
     let item
     if (payload._id) {
       if (!mongoose.Types.ObjectId.isValid(payload._id)) {
-        return Boom.badRequest('Room Id not valid.')
+        return Boom.badRequest('Building Id not valid.')
       }
-      item = await Room.findById(payload._id)
+      item = await Building.findById(payload._id)
       if (!item) {
-        return Boom.notFound('Room not found.')
+        return Boom.notFound('Building not found.')
       }
       item = Object.assign(item, payload || {})
       await item.save()
     } else {
-      item = await Room.create(payload)
+      item = await Building.create(payload)
     }
     return item
   } catch (error) {
@@ -60,11 +60,11 @@ const remove = async (request, h) => {
   try {
     let { params } = request
     if (!(params._id && mongoose.Types.ObjectId.isValid(params._id))) {
-      return Boom.badRequest('Room Id not valid.')
+      return Boom.badRequest('Building Id not valid.')
     }
-    let item = await Room.findById(params._id)
+    let item = await Building.findById(params._id)
     if (!item) {
-      return Boom.notFound('Room not found.')
+      return Boom.notFound('Building not found.')
     }
     await item.remove()
     return {
@@ -79,11 +79,11 @@ const changeStatus = async (request, h) => {
   try {
     let { params } = request
     if (!(params._id && mongoose.Types.ObjectId.isValid(params._id))) {
-      return Boom.badRequest('Room Id not valid.')
+      return Boom.badRequest('Building Id not valid.')
     }
-    let item = await Room.findById(params._id)
+    let item = await Building.findById(params._id)
     if (!item) {
-      return Boom.notFound('Room not found.')
+      return Boom.notFound('Building not found.')
     }
     item.status = request.payload.status
     await item.save()
