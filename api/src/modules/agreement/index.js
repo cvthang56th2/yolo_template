@@ -1,8 +1,8 @@
-import buildingRoutes from './route/index'
+import agreementRoutes from './route/index'
 
 exports.register = (server, options) => {
   /* Register router */
-  server.route(buildingRoutes)
+  server.route(agreementRoutes)
 }
 
-exports.name = 'building'
+exports.name = 'agreement'

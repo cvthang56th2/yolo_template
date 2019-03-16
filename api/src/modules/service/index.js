@@ -1,8 +1,8 @@
-import buildingRoutes from './route/index'
+import serviceRoutes from './route/index'
 
 exports.register = (server, options) => {
   /* Register router */
-  server.route(buildingRoutes)
+  server.route(serviceRoutes)
 }
 
-exports.name = 'building'
+exports.name = 'service'
