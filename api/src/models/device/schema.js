@@ -1,19 +1,10 @@
-import { Schema } from 'mongoose'
+// import { Schema } from 'mongoose'
 
 const schema = {
   name: String,
-  building: {
-    type: Schema.ObjectId,
-    ref: 'Building'
-  },
-  floor: Number,
-  peopleCapacity: Number,
   price: Number,
-  description: String,
-  devices: [{
-    type: Schema.ObjectId,
-    ref: 'Device'
-  }],
+  feeOfRefund: Number,
+  unit: String, // enum: options.deviceUnits
   status: {
     type: String,
     default: 'active',
@@ -26,7 +17,7 @@ const schema = {
 }
 
 const options = {
-  collection: 'rooms',
+  collection: 'devices',
   timestamps: true,
   toObject: { virtuals: true },
   toJSON: { virtuals: true }

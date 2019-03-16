@@ -2,23 +2,14 @@ import { Schema } from 'mongoose'
 
 const schema = {
   name: String,
-  building: {
-    type: Schema.ObjectId,
-    ref: 'Building'
-  },
-  floor: Number,
-  peopleCapacity: Number,
-  price: Number,
+  type: String, // enum: chi trả hàng tháng, chi phí sửa chữa, mua sắm mới, khác
   description: String,
-  devices: [{
-    type: Schema.ObjectId,
-    ref: 'Device'
-  }],
-  status: {
-    type: String,
-    default: 'active',
-    enum: ['active', 'archive']
-  },
+  paymentDate: Date,
+  quantity: Number,
+  unit: String, //enum: optionUnit
+  price: Number,
+  paymentMoney: Number,
+  description: String,
   createdAt: {
     type: Date,
     default: new Date
@@ -26,7 +17,7 @@ const schema = {
 }
 
 const options = {
-  collection: 'rooms',
+  collection: 'payments',
   timestamps: true,
   toObject: { virtuals: true },
   toJSON: { virtuals: true }

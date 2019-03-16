@@ -19,7 +19,7 @@ web/*.sln
 
 api/node_modules
 api/public/files/*
-
+schema
 #Ignore Mac DS_Store files
 .DS_Store
 **/.DS_Store

@@ -5,13 +5,13 @@
  */
 import mongoose, { Schema } from 'mongoose'
 import { schema, options } from './schema'
-import RoomDao from './dao'
+import ServiceDao from './dao'
 import { autoIncrement } from 'mongoose-plugin-autoinc'
 
 /**
  * Schema
  */
-const RoomSchema = new Schema(schema, options)
+const ServiceSchema = new Schema(schema, options)
 
 /**
  * Indexs
@@ -20,12 +20,12 @@ const RoomSchema = new Schema(schema, options)
 /**
  * Plugins
  */
-RoomSchema.plugin(autoIncrement, {
-  model: 'Room',
+ServiceSchema.plugin(autoIncrement, {
+  model: 'Service',
   field: 'idInc',
   startAt: 1
 })
 
-RoomSchema.plugin(RoomDao)
+ServiceSchema.plugin(ServiceDao)
 
-export default mongoose.model('Room', RoomSchema)
+export default mongoose.model('Service', ServiceSchema)

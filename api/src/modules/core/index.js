@@ -1,12 +1,12 @@
 import uploadRoutes from './route/upload.js'
 
-exports.register = async(server, options) => {
-    let upload = require(global.BASE_UTIL + 'upload')(server)
+exports.register = async (server, options) => {
+  let upload = require(global.BASE_UTIL + 'upload')(server)
 
-    server.expose(upload)
+  server.expose(upload)
 
-    /* Register router */
-    server.route(uploadRoutes)
+  /* Register router */
+  server.route(uploadRoutes)
 }
 
 exports.name = 'admin-core'

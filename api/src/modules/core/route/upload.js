@@ -9,49 +9,49 @@ import Validate from '../validate/upload'
 const config = global.CONFIG
 
 export default [{
-        method: 'POST',
-        path: '/upload',
-        handler: Controller.upload,
-        options: {
-            validate: Validate.upload,
-            payload: {
-                maxBytes: config.get('web.uploadMaxBytes'),
-                parse: true,
-                allow: 'multipart/form-data',
-                output: 'stream'
-            },
-            description: 'Handle Upload File',
-            tags: ['api'],
-            plugins: {
-                disinfect: false,
-                'hapi-swagger': {
-                    responses: { '400': { 'description': 'Bad Request' } },
-                    payloadType: 'form'
-                }
-            }
-        }
+  method: 'POST',
+  path: '/upload',
+  handler: Controller.upload,
+  options: {
+    validate: Validate.upload,
+    payload: {
+      maxBytes: config.get('web.uploadMaxBytes'),
+      parse: true,
+      allow: 'multipart/form-data',
+      output: 'stream'
     },
-    {
-        method: 'POST',
-        path: '/uploads',
-        handler: Controller.uploads,
-        options: {
-            validate: Validate.uploads,
-            payload: {
-                maxBytes: config.get('web.uploadMaxBytes'),
-                parse: true,
-                allow: 'multipart/form-data',
-                output: 'stream'
-            },
-            description: 'Handle Upload Files',
-            tags: ['api'],
-            plugins: {
-                disinfect: false,
-                'hapi-swagger': {
-                    responses: { '400': { 'description': 'Bad Request' } },
-                    payloadType: 'form'
-                }
-            }
-        }
+    description: 'Handle Upload File',
+    tags: ['api'],
+    plugins: {
+      disinfect: false,
+      'hapi-swagger': {
+        responses: { '400': { 'description': 'Bad Request' } },
+        payloadType: 'form'
+      }
     }
+  }
+},
+{
+  method: 'POST',
+  path: '/uploads',
+  handler: Controller.uploads,
+  options: {
+    validate: Validate.uploads,
+    payload: {
+      maxBytes: config.get('web.uploadMaxBytes'),
+      parse: true,
+      allow: 'multipart/form-data',
+      output: 'stream'
+    },
+    description: 'Handle Upload Files',
+    tags: ['api'],
+    plugins: {
+      disinfect: false,
+      'hapi-swagger': {
+        responses: { '400': { 'description': 'Bad Request' } },
+        payloadType: 'form'
+      }
+    }
+  }
+}
 ]

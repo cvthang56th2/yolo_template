@@ -5,13 +5,13 @@
  */
 import mongoose, { Schema } from 'mongoose'
 import { schema, options } from './schema'
-import RoomDao from './dao'
+import AgreementDao from './dao'
 import { autoIncrement } from 'mongoose-plugin-autoinc'
 
 /**
  * Schema
  */
-const RoomSchema = new Schema(schema, options)
+const AgreementSchema = new Schema(schema, options)
 
 /**
  * Indexs
@@ -20,12 +20,12 @@ const RoomSchema = new Schema(schema, options)
 /**
  * Plugins
  */
-RoomSchema.plugin(autoIncrement, {
-  model: 'Room',
+AgreementSchema.plugin(autoIncrement, {
+  model: 'Agreement',
   field: 'idInc',
   startAt: 1
 })
 
-RoomSchema.plugin(RoomDao)
+AgreementSchema.plugin(AgreementDao)
 
-export default mongoose.model('Room', RoomSchema)
+export default mongoose.model('Agreement', AgreementSchema)

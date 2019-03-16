@@ -1,19 +1,14 @@
 import { Schema } from 'mongoose'
 
 const schema = {
-  name: String,
-  building: {
-    type: Schema.ObjectId,
-    ref: 'Building'
-  },
-  floor: Number,
-  peopleCapacity: Number,
-  price: Number,
-  description: String,
-  devices: [{
-    type: Schema.ObjectId,
-    ref: 'Device'
-  }],
+  userName: String,
+  fullName: String,
+  permisson: String, // find solution for permisson
+  phone: String,
+  gender: String, //enum: ['male', 'female', 'other']
+  email: String,
+  password: String, //warning this
+  note: String,
   status: {
     type: String,
     default: 'active',
@@ -26,7 +21,7 @@ const schema = {
 }
 
 const options = {
-  collection: 'rooms',
+  collection: 'users',
   timestamps: true,
   toObject: { virtuals: true },
   toJSON: { virtuals: true }
