@@ -1,7 +1,7 @@
 import { Schema } from 'mongoose'
 
 const schema = {
-  userName: String,
+  newsName: String,
   fullName: String,
   permisson: String, // find solution for permisson
   phone: String,
@@ -21,7 +21,7 @@ const schema = {
 }
 
 const options = {
-  collection: 'users',
+  collection: 'newss',
   timestamps: true,
   toObject: { virtuals: true },
   toJSON: { virtuals: true }

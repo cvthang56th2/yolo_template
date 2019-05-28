@@ -5,11 +5,11 @@ import Validate from '../validate/index'
 export default [
   {
     method: 'GET',
-    path: '/users',
+    path: '/news',
     options: {
       handler: Controller.getItems,
       validate: Validate.getItems,
-      description: 'Get users',
+      description: 'Get news',
       tags: ['api'],
       plugins: {
         'hapi-swagger': {
@@ -20,7 +20,7 @@ export default [
     }
   }, {
     method: 'GET',
-    path: '/users/{_id}',
+    path: '/news/{_id}',
     options: {
       handler: Controller.getItem,
       validate: Validate.getItem,
@@ -35,7 +35,7 @@ export default [
     }
   }, {
     method: 'POST',
-    path: '/users',
+    path: '/news',
     options: {
       handler: Controller.save,
       validate: Validate.save,
@@ -50,7 +50,7 @@ export default [
     }
   }, {
     method: 'DELETE',
-    path: '/users/{_id}',
+    path: '/news/{_id}',
     options: {
       handler: Controller.remove,
       validate: Validate.remove,
@@ -65,7 +65,7 @@ export default [
     }
   }, {
     method: 'POST',
-    path: '/users/{_id}/status',
+    path: '/news/{_id}/status',
     options: {
       handler: Controller.changeStatus,
       validate: Validate.changeStatus,

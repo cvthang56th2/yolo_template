@@ -9,12 +9,12 @@ export default {
   },
   getItem: {
     params: {
-      _id: Joi.string().length(24).required().description('Building MongoId')
+      _id: Joi.string().length(24).required().description('News MongoId')
     }
   },
   save: {
     payload: {
-      _id: Joi.string().length(24).description('Building MongoId'),
+      _id: Joi.string().length(24).description('News MongoId'),
       name: Joi.string().description('name'),
       status: Joi.string().description('status')
     },
@@ -24,12 +24,12 @@ export default {
   },
   remove: {
     params: {
-      _id: Joi.string().length(24).required().description('Building MongoId')
+      _id: Joi.string().length(24).required().description('News MongoId')
     }
   },
   changeStatus: {
     params: {
-      _id: Joi.string().length(24).required().description('Building MongoId')
+      _id: Joi.string().length(24).required().description('News MongoId')
     },
     payload: {
       status: Joi.string().regex(/^(active|archive)$/).description('status')
@@ -37,7 +37,7 @@ export default {
   },
   upload: {
     params: {
-      _id: Joi.string().length(24).required().description('Building MongoId')
+      _id: Joi.string().length(24).required().description('News MongoId')
     },
     payload: {
       file: Joi.any().meta({ swaggerType: 'file' }).description('file'),

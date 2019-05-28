@@ -5,13 +5,13 @@
  */
 import mongoose, { Schema } from 'mongoose'
 import { schema, options } from './schema'
-import UserDao from './dao'
+import NewsDao from './dao'
 import { autoIncrement } from 'mongoose-plugin-autoinc'
 
 /**
  * Schema
  */
-const UserSchema = new Schema(schema, options)
+const NewsSchema = new Schema(schema, options)
 
 /**
  * Indexs
@@ -20,12 +20,12 @@ const UserSchema = new Schema(schema, options)
 /**
  * Plugins
  */
-UserSchema.plugin(autoIncrement, {
-  model: 'User',
+NewsSchema.plugin(autoIncrement, {
+  model: 'News',
   field: 'idInc',
   startAt: 1
 })
 
-UserSchema.plugin(UserDao)
+NewsSchema.plugin(NewsDao)
 
-export default mongoose.model('User', UserSchema)
+export default mongoose.model('News', NewsSchema)

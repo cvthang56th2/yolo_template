@@ -1,8 +1,8 @@
-import userRoutes from './route/index'
+import newsRoutes from './route/index'
 
 exports.register = (server, options) => {
   /* Register router */
-  server.route(userRoutes)
+  server.route(newsRoutes)
 }
 
-exports.name = 'user'
+exports.name = 'news'
