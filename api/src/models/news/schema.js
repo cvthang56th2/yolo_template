@@ -1,14 +1,8 @@
 import { Schema } from 'mongoose'
 
 const schema = {
-  newsName: String,
-  fullName: String,
-  permisson: String, // find solution for permisson
-  phone: String,
-  gender: String, //enum: ['male', 'female', 'other']
-  email: String,
-  password: String, //warning this
-  note: String,
+  title: String,
+  description: String,
   status: {
     type: String,
     default: 'active',

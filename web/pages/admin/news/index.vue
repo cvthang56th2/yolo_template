@@ -4,37 +4,39 @@
     <v-btn @click="showPopupDetail = true">
       ADD
     </v-btn>
+    <v-btn @click="setLoading(true)">
+      test
+    </v-btn>
     <v-data-table
       :headers="headers"
-      :items="desserts"
+      :items="news"
       :search="search"
       hide-actions
       :pagination.sync="pagination"
       class="elevation-1"
     >
       <template v-slot:items="props">
-        <td>{{ props.item.name }}</td>
+        <td>{{ props.item.title }}</td>
         <td class="text-xs-right">
-          {{ props.item.calories }}
+          {{ props.item.description }}
         </td>
         <td class="text-xs-right">
-          {{ props.item.fat }}
+          {{ props.item.createdAt }}
         </td>
         <td class="text-xs-right">
-          {{ props.item.carbs }}
-        </td>
-        <td class="text-xs-right">
-          {{ props.item.protein }}
-        </td>
-        <td class="text-xs-right">
-          {{ props.item.iron }}
+          <v-icon @click="editNews(props.item._id)">
+            edit
+          </v-icon>
+          <v-icon @click="removeNews(props.item._id)">
+            delete
+          </v-icon>
         </td>
       </template>
     </v-data-table>
     <div class="text-xs-center pt-2">
       <v-pagination v-model="pagination.page" :length="pages" />
     </div>
-    <PopupDetail v-model="showPopupDetail" />
+    <PopupDetail v-model="showPopupDetail" :news-id="selectedNewsId || ''" @save="fetchData" />
   </div>
 </template>
 
