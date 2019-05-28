@@ -2,7 +2,7 @@
   <v-dialog :value="value" max-width="500px" @input="hide">
     <v-card>
       <v-card-title class="headline">
-        ADD NEWS
+        {{ formData._id ? 'EDIT' : 'ADD' }} NEWS
       </v-card-title>
 
       <v-card-text>

@@ -2,6 +2,8 @@ import PopupDetail from '@/components/admin/news/popup/popup.detail.vue'
 import NewsService from '@/components/admin/news/services.js'
 
 export default {
+  name: 'admin-news',
+  layout: 'admin',
   components: {
     PopupDetail
   },
@@ -9,7 +11,6 @@ export default {
   data() {
     return {
       search: '',
-      pagination: {},
       selected: [],
       showPopupDetail: false,
       news: [],
@@ -24,15 +25,6 @@ export default {
         { text: 'Created At', value: 'createdAt' }
       ],
       selectedNewsId: null
-    }
-  },
-  computed: {
-    pages() {
-      if (this.pagination.rowsPerPage == null ||
-        this.pagination.totalItems == null
-      ) return 0
-
-      return Math.ceil(this.pagination.totalItems / this.pagination.rowsPerPage)
     }
   },
 

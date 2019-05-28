@@ -4,15 +4,11 @@
     <v-btn @click="showPopupDetail = true">
       ADD
     </v-btn>
-    <v-btn @click="setLoading(true)">
-      test
-    </v-btn>
     <v-data-table
       :headers="headers"
       :items="news"
       :search="search"
       hide-actions
-      :pagination.sync="pagination"
       class="elevation-1"
     >
       <template v-slot:items="props">
@@ -33,9 +29,6 @@
         </td>
       </template>
     </v-data-table>
-    <div class="text-xs-center pt-2">
-      <v-pagination v-model="pagination.page" :length="pages" />
-    </div>
     <PopupDetail v-model="showPopupDetail" :news-id="selectedNewsId || ''" @save="fetchData" />
   </div>
 </template>

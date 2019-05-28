@@ -8,7 +8,7 @@ const AppPlugin = {
     Vue.mixin({
       data: () => ({
         testData: 'lorem',
-        loading: false
+        loadingPage: false
       }),
 
       methods: {
@@ -16,7 +16,7 @@ const AppPlugin = {
           console.log(txt)
         },
         setLoading (value = true) {
-          this.loading = value
+          this.loadingPage = value
         }
       }
     })

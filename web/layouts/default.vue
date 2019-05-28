@@ -1,5 +1,8 @@
 <template>
   <v-app>
+    <div v-if="loadingPage" class="loading-page">
+      <v-progress-circular :size="50" color="primary" indeterminate />
+    </div>
     <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
       <v-list>
         <v-list-tile v-for="(item, i) in items" :key="i" :to="item.to" router exact>
@@ -49,3 +52,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.loading-page {
+  width: 100vw;
+  height: 100vh;
+  position: absolute
+}
+</style>
