@@ -31,6 +31,7 @@
 
 <script>
 export default {
+  name: 'LayoutAdmin',
   data() {
     return {
       clipped: false,
@@ -40,11 +41,16 @@ export default {
         {
           icon: 'apps',
           title: 'Home',
-          to: '/'
+          to: '/admin'
+        },
+        {
+          icon: 'apps',
+          title: 'News',
+          to: '/admin/news'
         }
       ],
       miniVariant: false,
-      title: 'FRONT LAYOUT'
+      title: 'ADMIN LAYOUT'
     }
   }
 }

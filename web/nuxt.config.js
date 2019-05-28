@@ -44,7 +44,8 @@ export default {
      */
     plugins: [
         '@/plugins/vuetify',
-        '@/plugins/vue-notifications'
+        '@/plugins/vue-notifications',
+        '@/plugins/app-plugin'
     ],
 
     /*
