@@ -1,9 +1,10 @@
 import Vue from 'vue'
+import Helpers from '@/utils/helpers'
 
 const AppPlugin = {
   install (Vue, options) {
     /* Register prototype */
-    // Vue.prototype._helpers = Helpers
+    Vue.prototype._helpers = Helpers
 
     Vue.mixin({
       data: () => ({
@@ -15,7 +16,7 @@ const AppPlugin = {
           console.log(txt)
         },
         setLoading (value = true) {
-          this.$store.dispatch('setLoading', value)
+          this.$store.dispatch('root/setLoading', value)
         },
         successNotify (data = {}) {
           this.$notify({

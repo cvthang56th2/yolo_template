@@ -62,7 +62,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      loadingPage: 'loadingPage'
+      loadingPage: 'root/loadingPage'
     })
   }
 }

@@ -63,12 +63,7 @@ export default {
     }
   },
 
-  async created () {
+  created () {
     this.fetchData()
-    const sendData = {
-      _id: this.newsId,
-      params: {}
-    }
-    await this.$store.dispatch('news/getItem', sendData)
   }
 }
