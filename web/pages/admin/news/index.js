@@ -38,28 +38,37 @@ export default {
 
   methods: {
     async fetchData () {
+      this.setLoading()
       try {
         const { data } = await NewsService.getItems()
         this.news = (data && data.data) || []
       } catch (error) {
         console.log(error)
       }
+      this.setLoading(false)
     },
     editNews (newsId) {
       this.showPopupDetail = true
       this.selectedNewsId = newsId
     },
     async removeNews (newsId) {
+      this.setLoading()
       try {
         await NewsService.remove(newsId)
         this.fetchData()
       } catch (error) {
         console.log(error)
       }
+      this.setLoading(false)
     }
   },
 
-  created () {
+  async created () {
     this.fetchData()
+    const sendData = {
+      _id: this.newsId,
+      params: {}
+    }
+    await this.$store.dispatch('news/getItem', sendData)
   }
 }

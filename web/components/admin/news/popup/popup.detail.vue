@@ -63,6 +63,7 @@ export default {
       this.$emit('input', false)
     },
     async save () {
+      this.setLoading()
       try {
         const sendData = {
           ...this.formData
@@ -73,6 +74,7 @@ export default {
       } catch (error) {
         console.log(error)
       }
+      this.setLoading(false)
     }
   }
 }

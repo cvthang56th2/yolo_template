@@ -28,14 +28,17 @@
     <v-footer :fixed="fixed" app>
       <span>&copy; 2019</span>
     </v-footer>
-    <notifications group="success" position="bottom right" />
+    <notifications position="bottom right" />
   </v-app>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'LayoutAdmin',
-  data() {
+
+  data () {
     return {
       clipped: false,
       drawer: false,
@@ -55,6 +58,12 @@ export default {
       miniVariant: false,
       title: 'ADMIN LAYOUT'
     }
+  },
+
+  computed: {
+    ...mapGetters({
+      loadingPage: 'loadingPage'
+    })
   }
 }
 </script>

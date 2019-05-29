@@ -7,8 +7,7 @@ const AppPlugin = {
 
     Vue.mixin({
       data: () => ({
-        testData: 'lorem',
-        loadingPage: false
+        testData: 'lorem'
       }),
 
       methods: {
@@ -16,7 +15,21 @@ const AppPlugin = {
           console.log(txt)
         },
         setLoading (value = true) {
-          this.loadingPage = value
+          this.$store.dispatch('setLoading', value)
+        },
+        successNotify (data = {}) {
+          this.$notify({
+            type: 'success',
+            title: data.title || 'Success',
+            text: data.message || 'Action successfully!'
+          })
+        },
+        errorHandle (error) {
+          this.$notify({
+            type: 'error',
+            title: 'Error',
+            text: (error && String(error)) || 'Something when wrong!'
+          })
         }
       }
     })
